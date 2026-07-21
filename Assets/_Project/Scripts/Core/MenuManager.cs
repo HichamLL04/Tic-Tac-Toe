@@ -15,12 +15,18 @@ public class MenuManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            Debug.Log(gameObject);
         }
     }
 
-    public void LoadGame()
+    public void LoadSelectGame()
     {
         LoadScene("2_SelectMenu", 1);
+    }
+
+    public void LoadMainMenu()
+    {
+        LoadScene("1_Menu", 1);
     }
 
     private void LoadScene(string sceneName, int id)

@@ -73,3 +73,5 @@ InitTestScene*.unity*
 /.vscode
 /Assets/_Project/Sprites/Humble Gift - Paper UI System v1.1
 /Assets/TextMesh Pro
+/Assets/_Recovery
+*.png
