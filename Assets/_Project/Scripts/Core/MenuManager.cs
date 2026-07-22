@@ -15,7 +15,6 @@ public class MenuManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            Debug.Log(gameObject);
         }
     }
 
@@ -27,6 +26,16 @@ public class MenuManager : MonoBehaviour
     public void LoadMainMenu()
     {
         LoadScene("1_Menu", 1);
+    }
+
+    public void LoadSetting()
+    {
+        LoadScene("3_Setting", 1);
+    }
+
+    public void LoadCredit()
+    {
+        LoadScene("4_Credit", 1);
     }
 
     private void LoadScene(string sceneName, int id)

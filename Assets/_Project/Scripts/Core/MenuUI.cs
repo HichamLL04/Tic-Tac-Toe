@@ -27,17 +27,18 @@ public class MenuUI : MonoBehaviour
 
         if (settingB != null)
         {
-            settingB.onClick.AddListener(() => MenuManager.instance.LoadSelectGame());
+            settingB.onClick.AddListener(() => MenuManager.instance.LoadSetting());
         }
 
         if (muteB != null)
         {
+            // Llamar a futuro el SoundManager para cancelar el sonido
             muteB.onClick.AddListener(() => MenuManager.instance.LoadSelectGame());
         }
 
         if (creditB != null)
         {
-            creditB.onClick.AddListener(() => MenuManager.instance.LoadSelectGame());
+            creditB.onClick.AddListener(() => MenuManager.instance.LoadCredit());
         }
 
         if (onlineB != null)
