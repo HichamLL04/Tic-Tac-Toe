@@ -7,7 +7,7 @@ public class MenuUI : MonoBehaviour
     [SerializeField] Button playB;
     [SerializeField] Button returnB;
     [SerializeField] Button settingB;
-    [SerializeField] Button muteB;
+    [SerializeField] Button reviewB;
     [SerializeField] Button creditB;
     [SerializeField] Button onlineB;
     [SerializeField] Button botB;
@@ -30,10 +30,9 @@ public class MenuUI : MonoBehaviour
             settingB.onClick.AddListener(() => MenuManager.instance.LoadSetting());
         }
 
-        if (muteB != null)
+        if (reviewB != null)
         {
-            // Llamar a futuro el SoundManager para cancelar el sonido
-            muteB.onClick.AddListener(() => MenuManager.instance.LoadSelectGame());
+            reviewB.onClick.AddListener(() => MenuManager.instance.LoadSelectGame());
         }
 
         if (creditB != null)
