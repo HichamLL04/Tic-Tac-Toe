@@ -32,7 +32,7 @@ public class MenuUI : MonoBehaviour
 
         if (reviewB != null)
         {
-            reviewB.onClick.AddListener(() => MenuManager.instance.LoadSelectGame());
+            reviewB.onClick.AddListener(() => MenuManager.instance.OpenReview());
         }
 
         if (creditB != null)

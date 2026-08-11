@@ -38,6 +38,14 @@ public class MenuManager : MonoBehaviour
         LoadScene("4_Credit", 1);
     }
 
+    public void OpenReview()
+    {
+        #if UNITY_ANDROID
+        string packageName = "cat.Hlaaouni.TicTacToe";
+        Application.OpenURL("market://details?id=" + packageName);
+        #endif
+    }
+
     private void LoadScene(string sceneName, int id)
     {
         if (id == 0)
