@@ -46,6 +46,11 @@ public class MenuManager : MonoBehaviour
         #endif
     }
 
+    public void OpenGamePanel()
+    {
+        LoadScene("5_GamePanel", 1);
+    }
+
     private void LoadScene(string sceneName, int id)
     {
         if (id == 0)

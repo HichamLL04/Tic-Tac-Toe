@@ -52,7 +52,7 @@ public class MenuUI : MonoBehaviour
 
         if (pvpB != null)
         {
-            pvpB.onClick.AddListener(() => MenuManager.instance.LoadSelectGame());
+            pvpB.onClick.AddListener(() => MenuManager.instance.OpenGamePanel());
         }
     }
 }
