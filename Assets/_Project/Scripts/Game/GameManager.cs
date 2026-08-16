@@ -8,11 +8,27 @@ public class GameManager : MonoBehaviour
     [SerializeField] Sprite[] resultados;
     [SerializeField] GameObject tablero;
     int turnoActual;
+    public static GameManager instance;
+    BoardManager boardManager;
 
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     public void Result(int turno)
     {
         turnoActual = turno;
         Invoke(nameof(ShowResult), 1f);
+        boardManager = FindAnyObjectByType<BoardManager>();
     }
 
     void ShowResult()
@@ -20,20 +36,31 @@ public class GameManager : MonoBehaviour
         if (turnoActual == 1)
         {
             tablero.SetActive(false);
-            resultado.GetComponent<Image>().sprite = resultados[2];
+            resultado.GetComponentInChildren<Image>().sprite = resultados[2];
             resultado.SetActive(true);
         }
         else if (turnoActual == 2)
         {
             tablero.SetActive(false);
-            resultado.GetComponent<Image>().sprite = resultados[1];
+            resultado.GetComponentInChildren<Image>().sprite = resultados[1];
             resultado.SetActive(true);
         }
         else
         {
             tablero.SetActive(false);
-            resultado.GetComponent<Image>().sprite = resultados[0];
+            resultado.GetComponentInChildren<Image>().sprite = resultados[0];
             resultado.SetActive(true);
         }
+    }
+
+    public void HideResult()
+    {
+        resultado.SetActive(false);
+        tablero.SetActive(true);
+    }
+
+    public void Retry()
+    {
+        boardManager.Retry();
     }
 }

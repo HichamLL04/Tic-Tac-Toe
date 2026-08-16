@@ -10,7 +10,6 @@ public class BoardManager : MonoBehaviour
     [SerializeField] Sprite alpha;
     int[,] board = new int[3, 3];
     static int turno; // 0 vacio, 1 cruz, 2 circulo
-    GameManager gameManager;
 
     void Start()
     {
@@ -21,7 +20,6 @@ public class BoardManager : MonoBehaviour
             botones[i].onClick.AddListener(() => OnButtonClick(index));
         }
         turno = Random.Range(1, 3);
-        gameManager = FindAnyObjectByType<GameManager>();
     }
 
     void SetAlpha()
@@ -49,12 +47,12 @@ public class BoardManager : MonoBehaviour
         if (CheckWin(board[row, col]))
         {
             DisableAllButtons();
-            gameManager.Result(turno);
+            GameManager.instance.Result(turno);
         }
         else if (CheckDraw())
         {
             DisableAllButtons();
-            gameManager.Result(0);
+            GameManager.instance.Result(0);
         }
     }
 
@@ -96,6 +94,23 @@ public class BoardManager : MonoBehaviour
         {
             boton.interactable = false;
         }
+    }
+
+    void EnableAllButtons()
+    {
+        foreach (Button boton in botones)
+        {
+            boton.interactable = true;
+        }
+    }
+
+    public void Retry()
+    {
+        board = new int[3, 3];
+        SetAlpha();
+        turno = Random.Range(1, 3);
+        GameManager.instance.HideResult();
+        EnableAllButtons();
     }
 
     Sprite GetRandomSprite()

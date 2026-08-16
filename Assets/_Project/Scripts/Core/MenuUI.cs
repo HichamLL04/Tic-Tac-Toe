@@ -12,6 +12,7 @@ public class MenuUI : MonoBehaviour
     [SerializeField] Button onlineB;
     [SerializeField] Button botB;
     [SerializeField] Button pvpB;
+    [SerializeField] Button retry;
 
     void Start()
     {
@@ -53,6 +54,11 @@ public class MenuUI : MonoBehaviour
         if (pvpB != null)
         {
             pvpB.onClick.AddListener(() => MenuManager.instance.OpenGamePanel());
+        }
+
+        if (retry != null)
+        {
+            retry.onClick.AddListener(() => GameManager.instance.Retry());
         }
     }
 }
