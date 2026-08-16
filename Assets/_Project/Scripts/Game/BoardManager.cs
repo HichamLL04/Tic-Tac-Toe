@@ -4,13 +4,13 @@ using UnityEngine.UI;
 
 public class BoardManager : MonoBehaviour
 {
-    [SerializeField] Button[] botones;
+    [SerializeField] public Button[] botones;
     [SerializeField] Sprite[] circulos;
     [SerializeField] Sprite[] cruzes;
     [SerializeField] Sprite alpha;
     int[,] board = new int[3, 3];
-    static int turno; // 0 vacio, 1 cruz, 1 circulo
-
+    static int turno; // 0 vacio, 1 cruz, 2 circulo
+    GameManager gameManager;
 
     void Start()
     {
@@ -21,6 +21,7 @@ public class BoardManager : MonoBehaviour
             botones[i].onClick.AddListener(() => OnButtonClick(index));
         }
         turno = Random.Range(1, 3);
+        gameManager = FindAnyObjectByType<GameManager>();
     }
 
     void SetAlpha()
@@ -43,7 +44,58 @@ public class BoardManager : MonoBehaviour
     {
         if (board[row, col] != 0) return;
         botones[row * 3 + col].GetComponent<Image>().sprite = GetRandomSprite();
-        board[row,col] = turno;
+        board[row, col] = turno;
+
+        if (CheckWin(board[row, col]))
+        {
+            DisableAllButtons();
+            gameManager.Result(turno);
+        }
+        else if (CheckDraw())
+        {
+            DisableAllButtons();
+            gameManager.Result(0);
+        }
+    }
+
+    bool CheckWin(int player)
+    {
+        for (int row = 0; row < 3; row++)
+        {
+            if (board[row, 0] == player && board[row, 1] == player && board[row, 2] == player)
+                return true;
+        }
+        for (int col = 0; col < 3; col++)
+        {
+            if (board[0, col] == player && board[1, col] == player && board[2, col] == player)
+                return true;
+        }
+        if (board[0, 0] == player && board[1, 1] == player && board[2, 2] == player)
+            return true;
+        if (board[0, 2] == player && board[1, 1] == player && board[2, 0] == player)
+            return true;
+
+        return false;
+    }
+
+    bool CheckDraw()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (board[i, j] == 0) return false;
+            }
+        }
+        return true;
+    }
+
+    void DisableAllButtons()
+    {
+        foreach (Button boton in botones)
+        {
+            boton.interactable = false;
+        }
     }
 
     Sprite GetRandomSprite()
@@ -53,15 +105,12 @@ public class BoardManager : MonoBehaviour
         {
             sprite = circulos[Random.Range(0, circulos.Length)];
             turno = 2;
-
         }
         else if (turno == 2)
         {
             sprite = cruzes[Random.Range(0, cruzes.Length)];
             turno = 1;
-
         }
         return sprite;
     }
-
 }
