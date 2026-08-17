@@ -29,8 +29,7 @@ public class GameManager : MonoBehaviour
     {
         winner = true;
         turnoActual = turno;
-        ShowResult();
-        Invoke(nameof(ShowResult), 1f);
+        Invoke(nameof(ShowResult), 1.5f);
     }
 
     void ShowResult()
