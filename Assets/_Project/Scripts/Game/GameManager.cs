@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     public void Retry()
     {
+        turnoActual = BoardManager.turno;
         winner = false;
         BoardManager.instance.Retry();
     }

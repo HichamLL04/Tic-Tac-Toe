@@ -10,8 +10,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField] Sprite[] cruzes;
     [SerializeField] Sprite alpha;
     int[,] board = new int[3, 3];
-    static int turno; // 0 vacio, 1 cruz, 2 circulo
-
+    public static int turno; // 0 vacio, 1 cruz, 2 circulo
     public static BoardManager instance;
 
     void Awake()
