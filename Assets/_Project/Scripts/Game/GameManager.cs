@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject tablero;
     int turnoActual;
     public static GameManager instance;
-    BoardManager boardManager;
+    public bool winner = false;
 
 
     void Awake()
@@ -24,11 +24,13 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public void Result(int turno)
     {
+        winner = true;
         turnoActual = turno;
+        ShowResult();
         Invoke(nameof(ShowResult), 1f);
-        boardManager = FindAnyObjectByType<BoardManager>();
     }
 
     void ShowResult()
@@ -61,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     public void Retry()
     {
-        boardManager.Retry();
+        winner = false;
+        BoardManager.instance.Retry();
     }
 }

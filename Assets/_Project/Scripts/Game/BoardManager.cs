@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class BoardManager : MonoBehaviour
 {
@@ -11,14 +12,24 @@ public class BoardManager : MonoBehaviour
     int[,] board = new int[3, 3];
     static int turno; // 0 vacio, 1 cruz, 2 circulo
 
+    public static BoardManager instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
         SetAlpha();
-        for (int i = 0; i < botones.Length; i++)
-        {
-            int index = i;
-            botones[i].onClick.AddListener(() => OnButtonClick(index));
-        }
+
         turno = Random.Range(1, 3);
     }
 
@@ -31,28 +42,33 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    void OnButtonClick(int index)
+    public void OnButtonClick(int index)
     {
         int row = index / 3;
         int col = index % 3;
         PlacePiece(row, col);
+        //StartCoroutine(PauseAllButtons());
     }
 
     void PlacePiece(int row, int col)
     {
+        if (GameManager.instance.winner) return;
+
         if (board[row, col] != 0) return;
         botones[row * 3 + col].GetComponent<Image>().sprite = GetRandomSprite();
         board[row, col] = turno;
 
         if (CheckWin(board[row, col]))
         {
-            DisableAllButtons();
             GameManager.instance.Result(turno);
         }
         else if (CheckDraw())
         {
-            DisableAllButtons();
             GameManager.instance.Result(0);
+        }
+        else
+        {
+            EnableAllButtons();
         }
     }
 
@@ -102,6 +118,13 @@ public class BoardManager : MonoBehaviour
         {
             boton.interactable = true;
         }
+    }
+
+    IEnumerator PauseAllButtons()
+    {
+        DisableAllButtons();
+        yield return new WaitForSeconds(0.5f);
+        EnableAllButtons();
     }
 
     public void Retry()
