@@ -7,7 +7,9 @@ public class BoardManager : MonoBehaviour
 {
     [SerializeField] public Button[] botones;
     [SerializeField] Sprite[] circulos;
+    [SerializeField] Sprite[] circulos_win;
     [SerializeField] Sprite[] cruzes;
+    [SerializeField] Sprite[] cruzes_win;
     [SerializeField] Sprite alpha;
     int[,] board = new int[3, 3];
     public static int turno; // 0 vacio, 1 cruz, 2 circulo
@@ -36,7 +38,7 @@ public class BoardManager : MonoBehaviour
     {
         foreach (Button boton in botones)
         {
-            Image img = boton.GetComponent<Image>();
+            Image img = boton.GetComponentInParent<Image>();
             img.sprite = alpha;
         }
     }
@@ -54,7 +56,7 @@ public class BoardManager : MonoBehaviour
         if (GameManager.instance.winner) return;
 
         if (board[row, col] != 0) return;
-        botones[row * 3 + col].GetComponent<Image>().sprite = GetRandomSprite();
+        botones[row * 3 + col].transform.parent.GetComponent<Image>().sprite = GetRandomSprite();
         board[row, col] = turno;
 
         if (CheckWin(board[row, col]))
@@ -140,14 +142,19 @@ public class BoardManager : MonoBehaviour
         Sprite sprite = alpha;
         if (turno == 1)
         {
-            sprite = circulos[Random.Range(0, circulos.Length)];
+            sprite = circulos[Random.Range(0, circulos.Length / 2)];
             turno = 2;
         }
         else if (turno == 2)
         {
-            sprite = cruzes[Random.Range(0, cruzes.Length)];
+            sprite = cruzes[Random.Range(0, circulos.Length / 2)];
             turno = 1;
         }
         return sprite;
+    }
+
+    Sprite SetWinSprite()
+    {
+        return null;
     }
 }

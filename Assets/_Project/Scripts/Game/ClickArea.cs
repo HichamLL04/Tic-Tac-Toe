@@ -9,7 +9,7 @@ public class ClickArea : MonoBehaviour
     {
         if (BoardManager.instance != null)
         {
-            GetComponentInParent<Button>().onClick.AddListener(() => BoardManager.instance.OnButtonClick(index));
+            GetComponent<Button>().onClick.AddListener(() => BoardManager.instance.OnButtonClick(index));
         }
     }
 }
