@@ -1,9 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager instance;
+
+    private Stack<string> sceneHistory = new Stack<string>();
+    private bool isGoingBack = false;
 
     public void Awake()
     {
@@ -25,6 +29,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        sceneHistory.Clear();
         LoadScene("1_Menu", 1);
     }
 
@@ -51,8 +56,30 @@ public class MenuManager : MonoBehaviour
         LoadScene("5_GamePanel", 1);
     }
 
+    public void LoadPreviousScene()
+    {
+        if (sceneHistory.Count > 0)
+        {
+            string previousScene = sceneHistory.Pop();
+            isGoingBack = true;
+            SceneManager.LoadScene(previousScene, LoadSceneMode.Single);
+        }
+        else
+        {
+            LoadMainMenu();
+        }
+    }
+
     private void LoadScene(string sceneName, int id)
     {
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (!isGoingBack && !string.IsNullOrEmpty(currentScene) && currentScene != sceneName)
+        {
+            sceneHistory.Push(currentScene);
+        }
+        isGoingBack = false;
+
         if (id == 0)
         {
             SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);

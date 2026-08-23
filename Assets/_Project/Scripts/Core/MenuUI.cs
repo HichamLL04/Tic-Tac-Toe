@@ -23,7 +23,7 @@ public class MenuUI : MonoBehaviour
 
         if (returnB != null)
         {
-            returnB.onClick.AddListener(() => MenuManager.instance.LoadMainMenu());
+            returnB.onClick.AddListener(() => MenuManager.instance.LoadPreviousScene());
         }
 
         if (settingB != null)
