@@ -7,7 +7,6 @@ public class MenuManager : MonoBehaviour
     public static MenuManager instance;
 
     private Stack<string> sceneHistory = new Stack<string>();
-    private bool isGoingBack = false;
 
     public void Awake()
     {
@@ -24,23 +23,23 @@ public class MenuManager : MonoBehaviour
 
     public void LoadSelectGame()
     {
-        LoadScene("2_SelectMenu", 1);
+        LoadScene("2_SelectMenu", 1, false);
     }
 
     public void LoadMainMenu()
     {
         sceneHistory.Clear();
-        LoadScene("1_Menu", 1);
+        LoadScene("1_Menu", 1, false);
     }
 
     public void LoadSetting()
     {
-        LoadScene("3_Setting", 1);
+        LoadScene("3_Setting", 1, false);
     }
 
     public void LoadCredit()
     {
-        LoadScene("4_Credit", 1);
+        LoadScene("4_Credit", 1, false);
     }
 
     public void OpenReview()
@@ -53,7 +52,7 @@ public class MenuManager : MonoBehaviour
 
     public void OpenGamePanel()
     {
-        LoadScene("5_GamePanel", 1);
+        LoadScene("5_GamePanel", 1, false);
     }
 
     public void LoadPreviousScene()
@@ -61,8 +60,7 @@ public class MenuManager : MonoBehaviour
         if (sceneHistory.Count > 0)
         {
             string previousScene = sceneHistory.Pop();
-            isGoingBack = true;
-            SceneManager.LoadScene(previousScene, LoadSceneMode.Single);
+            LoadScene(previousScene, 1, true);
         }
         else
         {
@@ -70,7 +68,7 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    private void LoadScene(string sceneName, int id)
+    private void LoadScene(string sceneName, int id, bool isGoingBack)
     {
         string currentScene = SceneManager.GetActiveScene().name;
 
@@ -78,7 +76,6 @@ public class MenuManager : MonoBehaviour
         {
             sceneHistory.Push(currentScene);
         }
-        isGoingBack = false;
 
         if (id == 0)
         {
