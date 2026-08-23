@@ -28,6 +28,14 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
+    }
+
     void Start()
     {
         SetAlpha();
@@ -239,10 +247,5 @@ public class BoardManager : MonoBehaviour
             turno = 1;
         }
         return (sprite, index);
-    }
-
-    Sprite SetWinSprite()
-    {
-        return null;
     }
 }
