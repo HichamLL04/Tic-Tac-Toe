@@ -75,3 +75,5 @@ InitTestScene*.unity*
 /Assets/TextMesh Pro
 /Assets/_Recovery
 *.png
+*.pdf
+*.otf

@@ -848,6 +848,23 @@ MonoBehaviour:
   - {fileID: 1239911516793389753, guid: dfbda00b58c89ea41809f7ad1d2dce0c, type: 3}
   - {fileID: -2390733109381545844, guid: dfbda00b58c89ea41809f7ad1d2dce0c, type: 3}
   - {fileID: 6144419092979407361, guid: dfbda00b58c89ea41809f7ad1d2dce0c, type: 3}
+  circulos_loss:
+  - {fileID: -7132050945275662371, guid: 5ccbd02eb50c0bb408130715ad2eea53, type: 3}
+  - {fileID: 5754822118724740838, guid: 5ccbd02eb50c0bb408130715ad2eea53, type: 3}
+  - {fileID: -1714979810475445160, guid: 5ccbd02eb50c0bb408130715ad2eea53, type: 3}
+  - {fileID: 1424068974592060597, guid: 5ccbd02eb50c0bb408130715ad2eea53, type: 3}
+  - {fileID: 8019405589198328928, guid: 5ccbd02eb50c0bb408130715ad2eea53, type: 3}
+  - {fileID: -1435685024416490760, guid: 5ccbd02eb50c0bb408130715ad2eea53, type: 3}
+  - {fileID: 9156606176321319653, guid: 5ccbd02eb50c0bb408130715ad2eea53, type: 3}
+  - {fileID: -216150521124068550, guid: 5ccbd02eb50c0bb408130715ad2eea53, type: 3}
+  - {fileID: -2867231822938543775, guid: c0d75a6254d9e1646b90c00f9fe0ed4a, type: 3}
+  - {fileID: 2035459679347060153, guid: c0d75a6254d9e1646b90c00f9fe0ed4a, type: 3}
+  - {fileID: -6681837756399001140, guid: c0d75a6254d9e1646b90c00f9fe0ed4a, type: 3}
+  - {fileID: -8811966499524567038, guid: c0d75a6254d9e1646b90c00f9fe0ed4a, type: 3}
+  - {fileID: -8457288557900343942, guid: c0d75a6254d9e1646b90c00f9fe0ed4a, type: 3}
+  - {fileID: -8539764094527110971, guid: c0d75a6254d9e1646b90c00f9fe0ed4a, type: 3}
+  - {fileID: 2532566367914077923, guid: c0d75a6254d9e1646b90c00f9fe0ed4a, type: 3}
+  - {fileID: -1016694176796176482, guid: c0d75a6254d9e1646b90c00f9fe0ed4a, type: 3}
   cruzes:
   - {fileID: 3022924913893435029, guid: f1c68c8658f37fc44b7e3e5c1ce369be, type: 3}
   - {fileID: 8647828729984239220, guid: f1c68c8658f37fc44b7e3e5c1ce369be, type: 3}
@@ -882,6 +899,23 @@ MonoBehaviour:
   - {fileID: 4811553091835354318, guid: dfbda00b58c89ea41809f7ad1d2dce0c, type: 3}
   - {fileID: -4427405490891617478, guid: dfbda00b58c89ea41809f7ad1d2dce0c, type: 3}
   - {fileID: -1195953941292272980, guid: dfbda00b58c89ea41809f7ad1d2dce0c, type: 3}
+  cruzes_loss:
+  - {fileID: 5713058029341591915, guid: 5ccbd02eb50c0bb408130715ad2eea53, type: 3}
+  - {fileID: -5519263806438734004, guid: 5ccbd02eb50c0bb408130715ad2eea53, type: 3}
+  - {fileID: 8301382887664814034, guid: 5ccbd02eb50c0bb408130715ad2eea53, type: 3}
+  - {fileID: -8795964342391935027, guid: 5ccbd02eb50c0bb408130715ad2eea53, type: 3}
+  - {fileID: 5814205150998145708, guid: 5ccbd02eb50c0bb408130715ad2eea53, type: 3}
+  - {fileID: 6901682048966757433, guid: 5ccbd02eb50c0bb408130715ad2eea53, type: 3}
+  - {fileID: -2829650288853706626, guid: 5ccbd02eb50c0bb408130715ad2eea53, type: 3}
+  - {fileID: -1855820895175586800, guid: 5ccbd02eb50c0bb408130715ad2eea53, type: 3}
+  - {fileID: 403689092954295100, guid: c0d75a6254d9e1646b90c00f9fe0ed4a, type: 3}
+  - {fileID: 5821468455460308413, guid: c0d75a6254d9e1646b90c00f9fe0ed4a, type: 3}
+  - {fileID: -4817076465501394644, guid: c0d75a6254d9e1646b90c00f9fe0ed4a, type: 3}
+  - {fileID: -490735505908475187, guid: c0d75a6254d9e1646b90c00f9fe0ed4a, type: 3}
+  - {fileID: -1680592058256180957, guid: c0d75a6254d9e1646b90c00f9fe0ed4a, type: 3}
+  - {fileID: -2494154810612130901, guid: c0d75a6254d9e1646b90c00f9fe0ed4a, type: 3}
+  - {fileID: -680606982442590748, guid: c0d75a6254d9e1646b90c00f9fe0ed4a, type: 3}
+  - {fileID: -6320657228459118100, guid: c0d75a6254d9e1646b90c00f9fe0ed4a, type: 3}
   alpha: {fileID: 483325286792400162, guid: d90c40173342f184d888d8e5f3ee6224, type: 3}
 --- !u!4 &453054348
 Transform:
@@ -4238,7 +4272,12 @@ MonoBehaviour:
   creditB: {fileID: 0}
   onlineB: {fileID: 0}
   botB: {fileID: 0}
+  botDifficulty: 2
   pvpB: {fileID: 0}
+  pvpB2: {fileID: 0}
+  easyBotB: {fileID: 0}
+  mediumBotB: {fileID: 0}
+  hardBotB: {fileID: 0}
   retry: {fileID: 1695748058}
 --- !u!1001 &1927253772
 PrefabInstance:

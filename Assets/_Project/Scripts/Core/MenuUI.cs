@@ -11,7 +11,12 @@ public class MenuUI : MonoBehaviour
     [SerializeField] Button creditB;
     [SerializeField] Button onlineB;
     [SerializeField] Button botB;
+    [SerializeField] [Range(1, 3)] int botDifficulty = 2; // 1: Fácil, 2: Medio, 3: Imposible (Minimax)
     [SerializeField] Button pvpB;
+    [SerializeField] Button pvpB2;
+    [SerializeField] Button easyBotB;
+    [SerializeField] Button mediumBotB;
+    [SerializeField] Button hardBotB;
     [SerializeField] Button retry;
 
     void Start()
@@ -48,12 +53,32 @@ public class MenuUI : MonoBehaviour
 
         if (botB != null)
         {
-            botB.onClick.AddListener(() => MenuManager.instance.LoadSelectGame());
+            botB.onClick.AddListener(() => MenuManager.instance.OpenGamePanelBot(botDifficulty));
+        }
+
+        if (easyBotB != null)
+        {
+            easyBotB.onClick.AddListener(() => MenuManager.instance.OpenGamePanelBot(1));
+        }
+
+        if (mediumBotB != null)
+        {
+            mediumBotB.onClick.AddListener(() => MenuManager.instance.OpenGamePanelBot(2));
+        }
+
+        if (hardBotB != null)
+        {
+            hardBotB.onClick.AddListener(() => MenuManager.instance.OpenGamePanelBot(3));
         }
 
         if (pvpB != null)
         {
-            pvpB.onClick.AddListener(() => MenuManager.instance.OpenGamePanel());
+            pvpB.onClick.AddListener(() => MenuManager.instance.OpenGamePanelPvP());
+        }
+
+        if (pvpB2 != null)
+        {
+            pvpB2.onClick.AddListener(() => MenuManager.instance.OpenGamePanelDynamicPvP());
         }
 
         if (retry != null)
