@@ -187,6 +187,11 @@ public class BoardManager : MonoBehaviour
 
         board[row, col] = currentTurno;
 
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.PlayRandomPlaySound();
+        }
+
         if (MenuManager.isDynamicMode)
         {
             totalMovesCount++;
